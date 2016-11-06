@@ -1,6 +1,3 @@
-
-
-
 /*
 
 New Installation Defaults
@@ -22,3 +19,8 @@ $home_slideshow_width=1400;
 $home_slideshow_height=900;
 
 $homeanim_folder = 'filestore/system/slideshow';
+$anonymous_login="guest";
+$list_search_results_title_trim=45;
+$disable_geocoding=true; 
+$enable_find_similar=false;
+$list_display_fields = array(8,76,3,12);
