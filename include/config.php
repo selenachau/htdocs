@@ -65,7 +65,7 @@ $ftp_username = 'my_username';
 $ftp_password = 'my_password';
 $ftp_defaultfolder = 'temp/';
 $thumbs_display_fields = array(8,3);
-$list_display_fields = array(8,3,12);
+$list_display_fields = array(8,76,3,12);
 $sort_fields = array(12);
 
 $storagedir = '/Applications/resourcespace-7.9-1/apps/resourcespace/htdocs/filestore/';
@@ -96,3 +96,4 @@ $home_slideshow_height=900;
 
 $homeanim_folder = 'filestore/system/slideshow';
 $anonymous_login="guest";
+$list_search_results_title_trim=45;
