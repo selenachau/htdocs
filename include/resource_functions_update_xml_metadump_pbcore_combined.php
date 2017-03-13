@@ -19,11 +19,13 @@ function update_xml_metadump_pbcore($resource)
 	fwrite($f,"<pbcoreDescriptionDocument xmlns=\"http://www.pbcore.org/PBCore/PBCoreNamespace.html\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.pbcore.org/PBCore/PBCoreNamespace.html https://raw.githubusercontent.com/WGBH/PBCore_2.1/master/pbcore-2.1.xsd\" >\n\n");
 
   	$data=get_resource_field_data($resource,false,false); # Get field data ignoring permissions
+  	
 	$dateType=$data[17];
 	$IdentifierSource2=$data[5];
 	$proxyFilename=$data[15];
 	$preservationFilename=$data[32];
 	$physicalFormat=$data[18];
+	$ancillary=$data[11];
     
 # asset info
   	for ($n=0;$n<count($data);$n++)
@@ -278,14 +280,24 @@ function update_xml_metadump_pbcore($resource)
 		
 			}
 		fwrite($f,"</pbcoreInstantiation>\n");
-		if ($data[$n]["name"]=="ancillaryMaterials")
+		
+		}
+
+# ancillary info
+  	if ($ancillary["value"] !='')
+		{
+		fwrite($f,"<pbcoreAnnotation annotationType=\"Ancillary Materials\">");
+		for ($n=0;$n<count($data);$n++)
 			{
-			for ($n=0;$n<count($data);$n++)
+			if ($value !='')
 				{
-				# ancillaryMaterials
-				fwrite($f,"<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " annotationType=\"Ancillary Materials\">".htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n");
+				if ($data[$n]["name"]=="ancillaryMaterials")
+					{
+					fwrite($f,"\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " annotationType=\"Ancillary Materials\">" . htmlspecialchars($value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n");
+					}
 				}
 			}
+		fwrite($f,"</pbcoreRelation>\n");
 		}
 
 	fwrite($f,"</pbcoreDescriptionDocument>\n");
