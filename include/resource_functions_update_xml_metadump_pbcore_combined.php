@@ -297,7 +297,7 @@ function update_xml_metadump_pbcore($resource)
 					}
 				}
 			}
-		fwrite($f,"</pbcoreRelation>\n");
+		fwrite($f,"</pbcoreAnnotation>\n");
 		}
 
 	fwrite($f,"</pbcoreDescriptionDocument>\n");
