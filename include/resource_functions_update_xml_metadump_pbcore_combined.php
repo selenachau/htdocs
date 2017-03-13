@@ -114,13 +114,13 @@ function update_xml_metadump_pbcore($resource)
 					foreach ($spatialArray as $spatial_value)
 						{
 						$spatial_value = trim($spatial_value," ");
-						fwrite($f,"<pbcoreCoverage>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " source=\"local\">" . htmlspecialchars($spatial_value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n\t<coverageType>spatial</coverageType>\n</pbcoreCoverage>\n");
+						fwrite($f,"<pbcoreCoverage>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " source=\"local\">" . htmlspecialchars($spatial_value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n\t<coverageType>Spatial</coverageType>\n</pbcoreCoverage>\n");
 						}
 					}
 				elseif ($data[$n]["name"]=="temporalCoverage")
 					{
 					# temporal coverage
-					fwrite($f,"<pbcoreCoverage>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]].">" . htmlspecialchars($value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n\t<coverageType>temporal</coverageType>\n</pbcoreCoverage>\n");
+					fwrite($f,"<pbcoreCoverage>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]].">" . htmlspecialchars($value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n\t<coverageType>Temporal</coverageType>\n</pbcoreCoverage>\n");
 					}
 				elseif ($data[$n]["name"]=="rightsStatement")
 					{
