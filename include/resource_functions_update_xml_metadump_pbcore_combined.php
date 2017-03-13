@@ -117,11 +117,6 @@ function update_xml_metadump_pbcore($resource)
 					# temporal coverage
 					fwrite($f,"<pbcoreCoverage>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]].">" . htmlspecialchars($value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n\t<coverageType>Temporal</coverageType>\n</pbcoreCoverage>\n");
 					}
-				elseif ($data[$n]["name"]=="ancillaryMaterials")
-					{
-					# ancillaryMaterials
-					fwrite($f,"<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " annotationType=\"Ancillary Materials\">".htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n");
-					}
 				elseif ($data[$n]["name"]=="rightsStatement")
 					{
 					# temporal coverage
@@ -283,6 +278,14 @@ function update_xml_metadump_pbcore($resource)
 		
 			}
 		fwrite($f,"</pbcoreInstantiation>\n");
+		if ($data[$n]["name"]=="ancillaryMaterials")
+			{
+			for ($n=0;$n<count($data);$n++)
+				{
+				# ancillaryMaterials
+				fwrite($f,"<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " annotationType=\"Ancillary Materials\">".htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n");
+				}
+			}
 		}
 
 	fwrite($f,"</pbcoreDescriptionDocument>\n");
