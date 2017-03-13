@@ -53,24 +53,6 @@ function update_xml_metadump_pbcore($resource)
 					# pbcorePublisher
 					fwrite($f,"<pbcorePublisher>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">" .htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcorePublisher>\n");
 					}
-				elseif ($data[$n]["name"]=="relatedIDs")
-					{
-					# pbcoreRelation relatedIDs
-					fwrite($f,"<pbcoreRelation>\n\t<pbcoreRelationType>References</pbcoreRelationType>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]]. ">");
-					fwrite($f,htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcoreRelation>\n");
-					}
-				elseif ($data[$n]["name"]=="epsID")
-					{
-					# pbcoreRelation epsID
-					fwrite($f,"<pbcoreRelation>\n\t<pbcoreRelationType>References</pbcoreRelationType>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]]. ">");
-					fwrite($f,htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcoreRelation>\n");
-					}
-				elseif ($data[$n]["name"]=="programName")
-					{
-					# pbcoreRelation epsID
-					fwrite($f,"<pbcoreRelation>\n\t<pbcoreRelationType>Is Part Of</pbcoreRelationType>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]]. ">");
-					fwrite($f,htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcoreRelation>\n");
-					}
 				elseif ($data[$n]["name"]=="subject")
 					{
 					# subjects
@@ -102,10 +84,23 @@ function update_xml_metadump_pbcore($resource)
 							}
 						}
 					}
-				elseif ($data[$n]["name"]=="ancillaryMaterials")
+				elseif ($data[$n]["name"]=="relatedIDs")
 					{
-					# ancillaryMaterials
-					fwrite($f,"<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " annotationType=\"Ancillary Materials\">".htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n");
+					# pbcoreRelation relatedIDs
+					fwrite($f,"<pbcoreRelation>\n\t<pbcoreRelationType>References</pbcoreRelationType>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]]. ">");
+					fwrite($f,htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcoreRelation>\n");
+					}
+				elseif ($data[$n]["name"]=="epsID")
+					{
+					# pbcoreRelation epsID
+					fwrite($f,"<pbcoreRelation>\n\t<pbcoreRelationType>References</pbcoreRelationType>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]]. ">");
+					fwrite($f,htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcoreRelation>\n");
+					}
+				elseif ($data[$n]["name"]=="programName")
+					{
+					# pbcoreRelation epsID
+					fwrite($f,"<pbcoreRelation>\n\t<pbcoreRelationType>Is Part Of</pbcoreRelationType>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]]. ">");
+					fwrite($f,htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n</pbcoreRelation>\n");
 					}
 				elseif ($data[$n]["name"]=="spatialCoverage")
 					{
@@ -121,6 +116,11 @@ function update_xml_metadump_pbcore($resource)
 					{
 					# temporal coverage
 					fwrite($f,"<pbcoreCoverage>\n\t<" . $xml_metadump_pbcore_map[$data[$n]["name"]].">" . htmlspecialchars($value) . "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n\t<coverageType>Temporal</coverageType>\n</pbcoreCoverage>\n");
+					}
+				elseif ($data[$n]["name"]=="ancillaryMaterials")
+					{
+					# ancillaryMaterials
+					fwrite($f,"<" . $xml_metadump_pbcore_map[$data[$n]["name"]] . " annotationType=\"Ancillary Materials\">".htmlspecialchars($value). "</" . $xml_metadump_pbcore_map[$data[$n]["name"]] . ">\n");
 					}
 				elseif ($data[$n]["name"]=="rightsStatement")
 					{
